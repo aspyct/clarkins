@@ -37,7 +37,7 @@
     Screen = function () {
         this.stableBuilds = 98;
         this.unstableBuilds = 23;
-        this.brokenBuilds = 15;
+        this.brokenBuilds = 1;
     };
     Screen.prototype = {
         showNewBuild: function (build) {
@@ -63,8 +63,8 @@
 
             text = colorBlock + " " + time + " " + build.job;
             // TODO Pad this to a fixed width
-            text += this.makeWhiteBlock(width - text.length - 10);
-            text += this.summary(10);
+            text += this.makeWhiteBlock(width - text.length - 20);
+            text += this.summary(20);
 
             console.log(text);
         },
@@ -72,7 +72,14 @@
 
         },
         formatDate: function (date) {
-            return date.getHours() + ":" + date.getMinutes();
+            var hours,
+                minutes,
+                pad;
+
+            pad = function (number) {
+                return number > 10 ? number : "0" + number;
+            };
+            return pad(date.getHours()) + ":" + pad(date.getMinutes());
         },
         summary: function (width) {
             var totalBuilds,
