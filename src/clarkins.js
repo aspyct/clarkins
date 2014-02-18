@@ -72,9 +72,7 @@
 
         },
         formatDate: function (date) {
-            var hours,
-                minutes,
-                pad;
+            var pad;
 
             pad = function (number) {
                 return number > 10 ? number : "0" + number;
@@ -118,7 +116,8 @@
 
     Build = function () {
         this.job = null;
-        this.success = null;
+        this.status = null;
+        this.date = null;
         this.url = null;
     };
 
